@@ -1,0 +1,33 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<style>
+    hr {
+        border: 1px solid white;
+    }
+
+    a {
+        color: darkgrey;
+    }
+</style>
+
+@if (!this.User.Identity.IsAuthenticated)
+{
+<div class="text-center">
+    <h1>Welcome to Chushka Universal Web Shop</h1>
+    <hr />
+    <p><a href="/Identity/Account/Login">Login</a> if you have an account.</p>
+    <p><a href="/Identity/Account/Register">Register</a> if you don't.</p>
+    @* administrator;123asd;administrator@mail.com *@
+    @* user;123asd;user@mail.com *@
+</div>
+}
+else
+{
+<div class="text-center">
+    <h1>Welcome to Chushka Universal Web Shop</h1>
+    <p>Greetings, @this.User.Identity.Name Admin:@this.User.IsInRole("Admin")</p>
+    <hr />
+</div>
+}
