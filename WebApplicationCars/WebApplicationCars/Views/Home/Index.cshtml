@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+@if (!this.User.Identity.IsAuthenticated)
+{
+    <div class="text-center">
+        <h1>Welcome to Cars Web Shop</h1>
+        <hr />
+        <p><a href="/Identity/Account/Login">Login</a> if you have an account.</p>
+        <p><a href="/Identity/Account/Register">Register</a> if you don't.</p>
+    </div>
+}
+else
+{
+    <div class="text-center">
+        <h1>Welcome to Cars Web Shop</h1>
+        @if (this.User.IsInRole("Admin"))
+        {
+            <p>Greetings, Administrator</p>
+        }
+        else
+        {
+            <p>Greetings, @this.User.Identity.Name</p>
+        }
+        <hr/>
+    </div>
+}
+<div class="text-center">
+    <img src="https://www.steelcobuildings.com/wp-content/uploads/2024/06/AdobeStock_156266430_Preview-e1718286922289.jpeg" height="45%" width="45%"/>
+</div>
